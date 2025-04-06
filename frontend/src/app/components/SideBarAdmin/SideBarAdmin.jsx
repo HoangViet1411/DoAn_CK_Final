@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 function SideBarAdmin() {
     const navigate = useNavigate();
 

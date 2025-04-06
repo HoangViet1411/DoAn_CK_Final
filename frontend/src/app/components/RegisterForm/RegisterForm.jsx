@@ -11,14 +11,14 @@ function RegisterForm() {
         e.preventDefault();
         try {
             await axios.post('http://localhost:5000/api/auth/register', { username, password });
-            navigate('/');
+            navigate('/'); // Điều hướng về trang đăng nhập sau khi đăng ký thành công
         } catch (error) {
             console.error(error.response.data);
         }
     };
 
     return (
-        <div>
+        <div className="register-container"> {/* Thêm container cho RegisterForm */}
             <form onSubmit={handleSubmit}>
                 <h2>Đăng ký</h2>
                 <input
@@ -34,7 +34,7 @@ function RegisterForm() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Đăng ký</button>
-                <p>Đã có tài khoản? <a href="/">Đăng nhập</a></p>
+                <p>Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
             </form>
         </div>
     );

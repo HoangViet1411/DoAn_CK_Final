@@ -1,40 +1,40 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa'; // Icon user đẹp
 import logo from '../../assets/images/logo.png';
 
 function HeaderAdmin() {
     const navigate = useNavigate();
-    const username = localStorage.getItem('username'); // Lấy username từ localStorage
+    const username = localStorage.getItem('username');
+
+    const handleLogoClick = () => {
+        navigate('/');
+    };
 
     const handleLogout = () => {
-        localStorage.removeItem('username'); // Xóa thông tin đăng nhập
+        localStorage.removeItem('username');
         localStorage.removeItem('role');
-        navigate('/'); // Chuyển hướng về trang đăng nhập
+        navigate('/');
     };
 
     return (
         <header
             style={{
                 display: 'flex',
-                justifyContent: 'space-between', // Đẩy các phần tử ra hai đầu
-                alignItems: 'center', // Căn giữa theo chiều dọc
+                justifyContent: 'space-between',
+                alignItems: 'center',
                 padding: '1rem',
+                color: 'white', // chữ trắng
             }}
         >
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={handleLogoClick}>
                 <img src={logo} alt="Logo" style={{ height: '60px', marginRight: '1rem' }} />
                 <h1 style={{ margin: 0 }}>Laptop VK</h1>
             </div>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center', // Xếp ngang, căn giữa theo chiều dọc
-                    gap: '0.5rem', // Khoảng cách giữa các phần tử
-                }}
-            >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 {username ? (
                     <>
-                        <span style={{ fontSize: '20px' }}>👤</span>
+                        <FaUserCircle size={24} color="white" />
                         <span style={{ fontSize: '13px' }}>{username}</span>
                         <button
                             onClick={handleLogout}
@@ -44,7 +44,7 @@ function HeaderAdmin() {
                                 background: 'none',
                                 cursor: 'pointer',
                                 fontSize: '13px',
-                                color: 'inherit',
+                                color: 'white',
                             }}
                         >
                             Đăng xuất
@@ -59,7 +59,7 @@ function HeaderAdmin() {
                             background: 'none',
                             cursor: 'pointer',
                             fontSize: '13px',
-                            color: 'inherit',
+                            color: 'white',
                         }}
                     >
                         Đăng xuất

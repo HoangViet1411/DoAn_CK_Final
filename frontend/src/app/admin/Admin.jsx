@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SideBarAdmin from '../components/SideBarAdmin/SideBarAdmin';
 
-function Admin() {
+function Admin({ children }) {
     const navigate = useNavigate();
     const [isAdmin, setIsAdmin] = useState(false);
 
@@ -26,11 +26,16 @@ function Admin() {
     if (!isAdmin) return null;
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="admin-layout">
             <SideBarAdmin />
             <div className="admin-content">
-                <h2>Trang Admin</h2>
-                <p>Chào mừng đến trang quản trị!</p>
+                {children || (
+                    <div className="admin-dashboard">
+                        <h2>Trang Admin</h2>
+                        <p>Chào mừng đến trang quản trị!</p>
+                        <p>Sau này sẽ update thêm dashboard</p>
+                    </div>
+                )}
             </div>
         </div>
     );

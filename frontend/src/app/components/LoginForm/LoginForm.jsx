@@ -24,7 +24,7 @@ function LoginForm() {
     };
 
     return (
-        <div>
+        <div className="login-container"> {/* Thêm container cho LoginForm */}
             <form onSubmit={handleSubmit}>
                 <h2>Đăng nhập</h2>
                 <input
