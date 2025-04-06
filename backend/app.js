@@ -23,7 +23,7 @@ app.use('/api/carts', cartRoutes);
 
 
 // === Database Connection ===
-const MONGO_URI = 'mongodb+srv://admin:123@cluster0.xo2tj.mongodb.net/laptop_web'; // Nên dùng biến môi trường
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://admin:123@cluster0.xo2tj.mongodb.net/laptop_web';
 mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB đã kết nối thành công.'))
   .catch(err => console.error('Lỗi kết nối MongoDB:', err));
